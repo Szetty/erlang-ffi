@@ -1,0 +1,74 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: f9770b8e732c94dc5bbd27df32fa90a8f7599ff5154f0bbaca575eca1663a126
+
+name:           erlang-ffi
+version:        1.0.0
+synopsis:       Send messages to an Erlang node using Haskell
+description:    Please see the README on GitHub at <https://github.com/Szetty/erlang-ffi#readme>
+category:       Foreign
+homepage:       https://github.com/Szetty/erlang-ffi#readme
+bug-reports:    https://github.com/Szetty/erlang-ffi/issues
+author:         Arnold Szederjesi-Dragomir
+maintainer:     szederjesiarnold@gmail.com
+copyright:      2021 Arnold Szederjesi-Dragomir
+license:        GPL
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/Szetty/erlang-ffi
+
+library
+  exposed-modules:
+      Foreign.Erlang
+      Foreign.Erlang.Network
+      Foreign.Erlang.OTP
+      Foreign.Erlang.OTP.GenServer
+      Foreign.Erlang.OTP.Mnesia
+      Foreign.Erlang.Processes
+      Foreign.Erlang.Types
+      Foreign.Erlang.Utilities
+  other-modules:
+      Paths_erlang_ffi
+  hs-source-dirs:
+      src
+  build-depends:
+      MissingH
+    , base >=4.7 && <5
+    , binary
+    , bytestring
+    , directory
+    , filepath
+    , network
+    , random
+  default-language: Haskell2010
+
+test-suite erlang-ffi-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_erlang_ffi
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      MissingH
+    , base >=4.7 && <5
+    , binary
+    , bytestring
+    , directory
+    , erlang-ffi
+    , filepath
+    , hspec
+    , network
+    , random
+  default-language: Haskell2010

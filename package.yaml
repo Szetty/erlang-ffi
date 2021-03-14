@@ -1,0 +1,45 @@
+name:                erlang-ffi
+version:             1.0.0
+github:              "Szetty/erlang-ffi"
+license:             GPL
+author:              "Arnold Szederjesi-Dragomir"
+maintainer:          "szederjesiarnold@gmail.com"
+copyright:           "2021 Arnold Szederjesi-Dragomir"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Send messages to an Erlang node using Haskell
+category:            Foreign
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/Szetty/erlang-ffi#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- bytestring
+- binary
+- directory
+- filepath
+- MissingH
+- network
+- random
+
+library:
+  source-dirs: src
+
+tests:
+  erlang-ffi-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - erlang-ffi
+    - hspec
