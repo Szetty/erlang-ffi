@@ -111,6 +111,10 @@ instance Erlang String where
   fromErlang (ErlBinary xs) = map (chr . fromEnum) xs
   fromErlang x              = error $ "can't convert to string: " ++ show x
 
+instance Erlang [Word8] where
+  toErlang x = ErlBinary x
+  fromErlang (ErlBinary x) = x
+
 instance Erlang Bool where
   toErlang True  = ErlAtom "true"
   toErlang False = ErlAtom "false"
