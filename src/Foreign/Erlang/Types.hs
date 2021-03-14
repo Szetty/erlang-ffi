@@ -115,6 +115,14 @@ instance Erlang [Word8] where
   toErlang x = ErlBinary x
   fromErlang (ErlBinary x) = x
 
+instance Erlang ByteString where
+  toErlang x = ErlBinary $ Byte.unpack x
+  fromErlang (ErlBinary x) = Byte.pack x
+
+instance Erlang B.ByteString where
+  toErlang x = ErlBinary $ B.unpack x
+  fromErlang (ErlBinary x) = B.pack x
+
 instance Erlang Bool where
   toErlang True  = ErlAtom "true"
   toErlang False = ErlAtom "false"
